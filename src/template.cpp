@@ -8,6 +8,13 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
+/*
+ * PROBLEM LINK: https://open.kattis.org/problems/
+ *
+ * Algorithm explanation:
+ *
+ */
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);

@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define rep(i, a, b) for(int (i) = a; (i) < (b); ++(i))
+#define all(x) begin(x), end(x)
+#define sz(x) (int)(x).size()
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+
 /*
  * PROBLEM LINK: https://open.kattis.com/problems/cantinaofbabel
  *
@@ -23,13 +30,6 @@ using namespace std;
  * the largest amount of characters that can all converse with each other. We subtract that from the total amount
  * of characters, and we get the number of people we need to kick out.
  */
-
-#define rep(i, a, b) for(int (i) = a; (i) < (b); ++(i))
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
 
 vector<pii> edges;
 vector<pair<string, vector<string>>> chars;
