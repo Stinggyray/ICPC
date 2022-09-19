@@ -1,6 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+ * PROBLEM LINK: https://open.kattis.com/problems/cantinaofbabel
+ *
+ * Algorithm explanation:
+ * First, we iterate over all of the input lines, and put them all in a vector of characters.
+ *
+ * Then, using that character vector, we iterate over all of the languages to construct every single edge
+ * between two characters.
+ * This would normally be pretty expensive, but thankfully, there's only up to 100 characters in the cantina.
+ *
+ * This graph is *directed*, because at least 1 character needs to have speaking ability for two characters to communicate,
+ * and that connection only goes one way. (We can represent two characters who speak the same language with two connections
+ * in either direction.)
+ *
+ * The notion of "conversing" in this problem means that node A and B on the graph need to have a connection to each
+ * other. So, as a result, this problem can be boiled down to "what is the largest group of STRONGLY CONNECTED vertices
+ * in this directed graph?" Strongly connected vertices are vertices that all have a path to each other, in any direction.
+ *
+ * We can now find an algorithm for this: Kosaraju's algorithm. We run it on our graph, and immediately, we get
+ * the largest amount of characters that can all converse with each other. We subtract that from the total amount
+ * of characters, and we get the number of people we need to kick out.
+ */
+
 #define rep(i, a, b) for(int (i) = a; (i) < (b); ++(i))
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()

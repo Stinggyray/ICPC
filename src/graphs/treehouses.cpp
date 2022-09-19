@@ -9,6 +9,26 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
+/*
+ * PROBLEM LINK: https://open.kattis.com/problems/treehouses
+ *
+ * Algorithm explanation:
+ * First, we iterate over the input, and put all of the treehouse locations into a vector.
+ *
+ * We then iterate over every single treehouse location, and construct a vector of edges
+ * (consisting of the two edge vertices and the weight of that edge).
+ *
+ * Then, we start with a union-find / disjoint set, and we first join every single cable provided and every single
+ * treehouse within walking distance of each other (the first e) because they all have a weight of 0.
+ *
+ * Then, we need to SORT the edges to make use of Kruskal's Algorithm to generate a minimum-weight spanning tree
+ * for all of the treehouses in the rainforest. After that, we just run Kruskal's algorithm, iterating over all
+ * of the edges in ascending weight order, and if the two edges aren't already connected, we add the weight
+ * of that new edge to the total weight. We then output the total weight.
+ *
+ * Using a union-find makes this very efficient, allowing Kruskal's Algorithm to run quickly.
+ */
+
 // union find
 struct UF {
 	vi e;
@@ -79,7 +99,7 @@ int main() {
 		forest.join(i, i + 1);
 	}
 
-	sort(edges.begin(), edges.end(), compareWeight);
+	sort(all(edges), compareWeight);
 
 	double weight = 0;
 	rep(i, 0, sz(edges)) {

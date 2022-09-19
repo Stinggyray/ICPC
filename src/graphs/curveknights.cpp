@@ -8,6 +8,36 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
+/*
+ * PROBLEM LINK: https://open.kattis.com/problems/curveknights
+ *
+ * Algorithm explanation:
+ * This contains two attempts at solutions, because I didn't realize this program needed longs. I hate everything.
+ *
+ * My first attempt (which works with longs) involved the following approach:
+ * Parse the input, and while parsing it, maintain a dependency count for every single material for every time it's
+ * a dependency. It would mess up our total material count if we multiplied a material down the material tree BEFORE
+ * its upstream materials were all "paid out".
+ *
+ * So, we iterate over all of the dependency relationships provided in the input, and only take action on them if
+ * they don't have any dependencies themselves. We continue doing this until the list of dependency relationships is
+ * completely empty.
+ *
+ * This approach initially didn't work, so after doing some more experimentation, I recognized this data structure as
+ * a "directed acyclical graph" (DAG) (because cycles would break everything regarding dependencies). I then also
+ * realized that if we sorted the DAG *topologically* (which definitionally, every single DAG has a topological sort),
+ * we could just iterate through the DAG in order, because then nothing would depend on something upstream (because
+ * that's what a topological sort is by definition). I then found the existence of Kahn's Algorithm, and sorted the
+ * dependency list topologically using that. After that, I still... experienced the exact same error.
+ *
+ * After asking for some help, I realized why the dependencies could only be 1 through 3. It was to avoid overflowing
+ * longs, because turns out, 3^10000 is a very high number.
+ *
+ * So, I switched to longs and it worked. I kinda wanna die.
+ *
+ * At least it wasn't all bad. I learned about DAGs, topological sort, and Kahn's Algorithm.
+ */
+
 // there is quite simply no shot
 int main() {
 	ios::sync_with_stdio(false);
