@@ -9,7 +9,7 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 /*
- * PROBLEM LINK: https://open.kattis.org/problems/emptyingbaltic
+ * PROBLEM LINK: https://open.kattis.com/problems/emptyingbaltic
  *
  * Algorithm explanation:
  * This nutcase wants to delete the Baltic.
